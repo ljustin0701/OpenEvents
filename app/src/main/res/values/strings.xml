@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">OpenEvents</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="technology">Technology Events</string>
+    <string name="games">Gaming Events</string>
+    <string name="music">Music Events</string>
+    <string name="food_drink">Food and Drink Events</string>
+    <string name="photography">Photography Events</string>
+    <string name="upcoming_event">You have a MeetUp event coming up soon!</string>
+    <string name="meetup_notif">MeetUp Event</string>
+    <string name="alarm_set">Your alarm is set</string>
+</resources>
