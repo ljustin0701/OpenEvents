@@ -25,7 +25,7 @@ import java.util.List;
 
 public class EventsFetcher {
 
-    private static final String API_KEY = "insert api key here";
+    private static final String API_KEY = BuildConfig.API_KEY; //replace with your own api key
     private static final String ONLY = "venue.city,venue.country,venue.address_1,venue.name,name,time";
     private static Uri ENDPOINT;
 
