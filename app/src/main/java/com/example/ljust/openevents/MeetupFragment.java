@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
@@ -41,7 +42,6 @@ public class MeetupFragment extends Fragment {
     public static final String NOTIFICATION_ID = "notification_id";
     public static final String NOTIFICATION = "notification";
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +62,10 @@ public class MeetupFragment extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
+        changeActionBar();
+    }
+
+    private void changeActionBar(){
         parentActivity.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4CFC9E")));
         switch(topic) {
             case "technology":
@@ -79,9 +83,8 @@ public class MeetupFragment extends Fragment {
             case "photo":
                 parentActivity.getSupportActionBar().setTitle(R.string.photography);
                 break;
-            default :
+            default:
                 parentActivity.getSupportActionBar().setTitle(R.string.app_name);
-                break;
         }
     }
 

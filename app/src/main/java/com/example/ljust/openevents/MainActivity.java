@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,8 +37,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        Fragment titleFrag = new TitleFragment();
-        fm.beginTransaction().replace(R.id.fragment_container, titleFrag).commit();
+        if(savedInstanceState == null){
+            Fragment titleFrag = new TitleFragment();
+            fm.beginTransaction().replace(R.id.fragment_container, titleFrag).commit();
+        }
 
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mDrawerList = (ListView)findViewById(R.id.nav_drawer);
