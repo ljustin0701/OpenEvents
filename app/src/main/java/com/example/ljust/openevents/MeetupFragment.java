@@ -36,7 +36,6 @@ public class MeetupFragment extends Fragment {
 
     private RecyclerView mEventsRecyclerView;
     private List<Event> mEvents = new ArrayList<>();
-    private List<Event> mSavedEvents = new ArrayList<>();
     private AppCompatActivity parentActivity;
     private String topic;
     public static final String NOTIFICATION_ID = "notification_id";
@@ -47,7 +46,6 @@ public class MeetupFragment extends Fragment {
         super.onCreate(savedInstanceState);
         parentActivity = ((AppCompatActivity)getContext());
         topic = getArguments().getString("topic");
-        new FetchEventsTask().execute();
     }
 
     @Override
@@ -62,6 +60,7 @@ public class MeetupFragment extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
+        new FetchEventsTask().execute();
         changeActionBar();
     }
 
@@ -131,7 +130,6 @@ public class MeetupFragment extends Fragment {
                                     .build();
                             scheduleNotification(notif, mEvent.getTimeinMillis());
                             Toast.makeText(getContext(), R.string.alarm_set, Toast.LENGTH_SHORT).show();
-                            mSavedEvents.add(mEvent);
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -160,10 +158,10 @@ public class MeetupFragment extends Fragment {
 
     private class EventAdapter extends RecyclerView.Adapter<EventHolder> {
 
-        private List<Event> mEvents;
+        private List<Event> mAdapterEvents;
 
         public EventAdapter(List<Event> events) {
-            mEvents = events;
+            mAdapterEvents = events;
         }
 
         @Override
@@ -175,12 +173,12 @@ public class MeetupFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(EventHolder holder, int position) {
-            holder.bindEvent(mEvents.get(position));
+            holder.bindEvent(mAdapterEvents.get(position));
         }
 
         @Override
         public int getItemCount() {
-            return mEvents.size();
+            return mAdapterEvents.size();
         }
     }
 
